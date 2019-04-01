@@ -8,6 +8,9 @@ namespace TestandoGit
         {
             Console.WriteLine("Olá mundo!");
             Console.WriteLine("Estou aprendendo git!!!");
+            Console.WriteLine("E você?");
+
+            Console.ReadLine();
         }
     }
 }

@@ -22,8 +22,11 @@ namespace DiasVividos
 
             result = dataAtual.Subtract(dataNasc);
 
+            Console.WriteLine();
             Console.WriteLine($"Você viveu {result.ToString("dd")} dias!");
 
+            Console.WriteLine();
+            Console.Write("Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
     }

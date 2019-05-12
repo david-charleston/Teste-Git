@@ -12,7 +12,7 @@
 
         public override double Payment()
         {
-            return base.Payment() + (AdditionalCharge * (110 / 100));   
+            return base.Payment() + (AdditionalCharge * 1.1);   
         }
     }
 }

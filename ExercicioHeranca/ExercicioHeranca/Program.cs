@@ -48,6 +48,18 @@ namespace ExercicioHeranca
 
                 Console.WriteLine();
             }
+
+            Console.WriteLine("Payments: ");
+
+            for (int i = 0; i < employees.Length; i++)
+            {
+                Console.WriteLine($"{employees[i].Name} - " +
+                    $"{string.Format("{0:c2}", employees[i].Payment())}");
+            }
+
+            Console.WriteLine();
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

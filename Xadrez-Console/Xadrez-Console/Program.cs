@@ -1,4 +1,5 @@
 ﻿using System;
+using Xadrez_Console.Tabuleiro;
 
 namespace Xadrez_Console
 {
@@ -6,7 +7,7 @@ namespace Xadrez_Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Tabuleiro.Tabuleiro tabuleiro = new Tabuleiro.Tabuleiro(8, 8);
         }
     }
 }

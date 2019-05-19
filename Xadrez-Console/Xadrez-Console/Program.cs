@@ -1,7 +1,6 @@
 ﻿using System;
 using Xadrez_Console.Xadrez;
 using Xadrez_Console.Tabuleiro;
-using Xadrez_Console.Enums;
 using Xadrez_Console.Tabuleiro.Exceptions;
 
 namespace Xadrez_Console
@@ -10,14 +9,29 @@ namespace Xadrez_Console
     {
         static void Main(string[] args)
         {
-            Tabuleiro.Tabuleiro tabuleiro = new Tabuleiro.Tabuleiro(8, 8);
+            try
+            {
+                PartidaXadrez partida = new PartidaXadrez();
 
-            tabuleiro.AddPeca(new Rei(Cor.Branca, tabuleiro), new Posicao(0, 0));
-            tabuleiro.AddPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(4, 4));
+                while (!partida.Terminda)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.Tabuleiro);
 
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicao().ToPosicao();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicao().ToPosicao();
 
-            Tela.ImprimirTabuleiro(tabuleiro);
-
+                    partida.ExecutaMovimento(origem, destino);
+                }
+            }
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
             Console.ReadKey();
         }
     }

@@ -36,6 +36,19 @@ namespace Xadrez_Console.Tabuleiro
             peca.Posicao = posicao;
         }
 
+        public Peca RetirarPeca(Posicao posicao)
+        {
+            if (RetonaPeca(posicao) == null)
+            {
+                return null;
+            }
+            //Armazena a peça
+            Peca aux = RetonaPeca(posicao);
+            aux.Posicao = null;
+            pecas[posicao.Linha, posicao.Coluna] = null;
+            return aux;
+        }
+
         // Verifica se há uma peça na posição escolhida
         public bool ExistePeca(Posicao posicao)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Xadrez_Console.Tabuleiro;
+using Xadrez_Console.Xadrez;
 
 namespace Xadrez_Console
 {
@@ -40,6 +41,15 @@ namespace Xadrez_Console
                 Console.Write(peca + " ");
                 Console.ForegroundColor = color;
             }
+        }
+
+        public static PosicaoXadrez LerPosicao()
+        {
+            string posicao = Console.ReadLine().ToLower();
+            // Armazena a letra que foi digitada
+            char coluna = posicao[0];
+            int linha = int.Parse(posicao[1] + "");
+            return new PosicaoXadrez(coluna, linha);
         }
     }
 }

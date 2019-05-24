@@ -31,6 +31,7 @@ namespace Xadrez_Console.Xadrez
         private void ColocarPecas()
         {
             Tabuleiro.AddPeca(new Torre(Cor.Branca, Tabuleiro), new PosicaoXadrez('c', 1).ToPosicao());
+            Tabuleiro.AddPeca(new Rei(Cor.Preta, Tabuleiro), new PosicaoXadrez('c', 8).ToPosicao());
         }
     }
 }

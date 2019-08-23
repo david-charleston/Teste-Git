@@ -11,17 +11,24 @@ namespace ExIComparable
             // A IComparable é utilizada para comparar objetos
             // Esta interface retorna um número inteiro
 
-            string file = @"C:\Users\davir\Desktop";
+            string file = @"C:\Users\davir\Desktop\in.txt";
 
             try
             {
-                using (StreamReader sr = new StreamReader(file))
+                using (StreamReader sr = File.OpenText(file))
                 {
-                    List<string> list = new List<string>();
+                    List<Employee> list = new List<Employee>();
 
                     while (!sr.EndOfStream)
                     {
-                        list.Add(sr.ReadLine());
+                        list.Add(new Employee(sr.ReadLine()));
+                    }
+                    // O método sort ordena uma lista
+                    list.Sort();
+
+                    foreach (Employee item in list)
+                    {
+                        Console.WriteLine(item);
                     }
                 }
             }

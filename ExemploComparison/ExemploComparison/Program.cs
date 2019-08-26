@@ -16,7 +16,10 @@ namespace ExemploComparison
                 new Product("Celular", 1275)
             };
 
-            list.Sort(CompareProducts);
+            // Função lambda
+            Comparison<Product> comp = (p1, p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
+
+            list.Sort(comp);
 
             foreach (Product product in list)
             {
@@ -24,12 +27,6 @@ namespace ExemploComparison
             }
 
             Console.ReadKey();
-        }
-
-        // Método auxíliar que compara os produtos
-        static int CompareProducts(Product p1, Product p2)
-        {
-            return p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
         }
     }
 }

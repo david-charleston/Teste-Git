@@ -9,8 +9,7 @@ namespace ExIComparable
         static void Main(string[] args)
         {
             // A IComparable é utilizada para comparar objetos
-            // Esta interface retorna um número inteiro
-
+ 
             string file = @"C:\Users\davir\Desktop\in.txt";
 
             try

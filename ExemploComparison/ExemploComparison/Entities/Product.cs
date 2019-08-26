@@ -2,7 +2,7 @@
 
 namespace ExemploComparison.Entities
 {
-    class Product : IComparable<Product>
+    class Product 
     {
         public string Name { get; set; }
         public double Price { get; set; }
@@ -16,11 +16,6 @@ namespace ExemploComparison.Entities
         public override string ToString()
         {
             return $"Name: {Name} R$ {string.Format("{0:c2}", Price)}";
-        }
-
-        public int CompareTo(Product other)
-        {
-            return Name.ToUpper().CompareTo(other.Name.ToUpper());
         }
     }
 }

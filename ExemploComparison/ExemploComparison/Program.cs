@@ -16,7 +16,7 @@ namespace ExemploComparison
                 new Product("Celular", 1275)
             };
 
-            list.Sort();
+            list.Sort(CompareProducts);
 
             foreach (Product product in list)
             {
@@ -24,6 +24,12 @@ namespace ExemploComparison
             }
 
             Console.ReadKey();
+        }
+
+        // Método auxíliar que compara os produtos
+        static int CompareProducts(Product p1, Product p2)
+        {
+            return p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
         }
     }
 }

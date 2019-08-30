@@ -24,12 +24,17 @@ namespace ExPredicate
             Console.WriteLine();
 
             Console.WriteLine("Removendo os produtos com o valor acima de R$ 100");
-            products.RemoveAll(p => p.Price >= 100.00);
+            products.RemoveAll(Remove);
 
             foreach (Product p in products)
             {
                 Console.WriteLine(p);
             }
+        }
+
+        public static bool Remove(Product product)
+        {
+            return (product.Price >= 100.00) ? true : false;
         }
     }
 }

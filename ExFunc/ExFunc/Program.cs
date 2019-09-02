@@ -20,18 +20,15 @@ namespace ExFunc
             /**
              * O Select recebe um Func e retorna um IEnumarable
              * O IEnumarable precisa ser convertido em List
+             * O Select retorna uma nova coleção 
             */
-            List<string> resultUpper = products.Select(NameUpper).ToList();
+            Func<Product, string> func = p => p.Name.ToUpper();
+            List<string> resultUpper = products.Select(func).ToList();
 
             foreach (string item in resultUpper)
             {
                 Console.WriteLine(item);
             }
-        }
-
-        static string NameUpper(Product p)
-        {
-            return p.Name.ToUpper();
         }
     }
 }

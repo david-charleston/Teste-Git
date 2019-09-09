@@ -39,21 +39,40 @@ namespace DemoLinq
                 new Product() { Id = 11, Name = "Level", Price = 70.0, Category = c1 }
             };
 
-            var r1 = products.Where(p => p.Category.Tier == 1 && p.Price < 900);
+            // var r1 = products.Where(p => p.Category.Tier == 1 && p.Price < 900);
+            var r1 = from p in products
+                     where p.Category.Tier == 1 && p.Price < 900
+                     select p;
             Print("Tier 1 and price < 900: ", r1);
 
-            var r2 = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name);
+            // var r2 = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name);
+            var r2 = from p in products
+                     where p.Category.Name == "Tools"
+                     select p.Name;
             Print("Names of products of category tools: ", r2);
 
             // Retorna os dados que começam com a letra C e apenas os atributos que foram especificados
-            var r3 = products.Where(p => p.Name[0] == 'C')
-                .Select(p => new { Nome = p.Name, Preço = p.Price, Categoria = p.Category.Name });
+            /*var r3 = products.Where(p => p.Name[0] == 'C')
+                .Select(p => new { Nome = p.Name, Preço = p.Price, Categoria = p.Category.Name });*/
+            var r3 = from p in products
+                     where p.Name[0] == 'C'
+                     select new
+                     {
+                         p.Name,
+                         p.Price,
+                         CategoryName = p.Category.Name
+                     };
             Print("Names started with C and Anonymous Object", r3);
 
             // Ordenando por preço e por nome
-            var r4 = products.Where(p => p.Category.Tier == 1)
+            /*var r4 = products.Where(p => p.Category.Tier == 1)
                 .OrderBy(p => p.Price)
-                .ThenBy(p => p.Name);
+                .ThenBy(p => p.Name);*/
+            var r4 = from p in products
+                     where p.Category.Tier == 1
+                     orderby p.Name
+                     orderby p.Price
+                     select p;
             Print("Order by price then name: ", r4);
 
             // Skip e Take serve para paginação
@@ -101,7 +120,9 @@ namespace DemoLinq
             Console.WriteLine();
 
             // Funções de agrupamento
-            var r15 = products.GroupBy(p => p.Category);
+            //var r15 = products.GroupBy(p => p.Category);
+            var r15 = from p in products
+                      group p by p.Category;
             foreach (IGrouping<Category, Product> item in r15)
             {
                 Console.WriteLine($"Category: {item.Key.Name}");
